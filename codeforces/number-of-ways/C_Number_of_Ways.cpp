@@ -5,6 +5,8 @@
 #include <fstream>
 using namespace std;
 
+//We only need to consider the combiantion of 1st partition and 2nd partiton.
+//Since the total sum is fixed, if the 1st and 2nd are determined, the 3rd will be determined.
 long long calculate (vector<long long>& preSum, const long long& target) {
     long long count_1st = 0;
     long long result = 0;
@@ -14,7 +16,8 @@ long long calculate (vector<long long>& preSum, const long long& target) {
         
         if (preSum[i] == 2*target) {
             //When the presum is equal to 2*target, it means that it get into the second partition
-            //And in this situation, it has count_1st kind of ways to get there.
+            //And in this situation, it has 'count_1st' kind of ways to get there.
+            //By finding all the possible 2nd partition, we can get the result.
             result += count_1st;
             // cout << "result = " << result << endl;
         }
